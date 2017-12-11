@@ -67,7 +67,7 @@ public abstract class AutoPilotController {
         if(Float.isNaN(orientation.getxValue() + velocity.getxValue() + rotation.getxValue())||
         		Float.isNaN(orientation.getyValue() + velocity.getyValue() + rotation.getyValue())||
         		Float.isNaN(orientation.getzValue() + velocity.getzValue() + rotation.getzValue())){
-        	System.out.println("Nan Value in Parameters \n-> Orientation: " + orientation + "\n-> Rotation: " + rotation + "\n-> Velocity: " + velocity);
+        	//System.out.println("Nan Value in Parameters \n-> Orientation: " + orientation + "\n-> Rotation: " + rotation + "\n-> Velocity: " + velocity);
         }
         //change until the controls fit
         AOAControlMainLeft(controlOutputs, optimisations,angleOfAttack, orientation, rotation, velocity);
@@ -724,7 +724,7 @@ public abstract class AutoPilotController {
     private class DeepCopyInputs implements AutopilotInputs{
     	
     	public DeepCopyInputs(AutopilotInputs input){
-    		this.orientation = new Vector(input.getHeading(), input.getPitch(), input.getRoll());
+    		this.orientation = new Vector(input.getHeading(), -input.getPitch(), input.getRoll());
     		this.position = new Vector(input.getX(), input.getY(), input.getZ());
     		this.elapsedTime = input.getElapsedTime();
     		this.image = input.getImage();

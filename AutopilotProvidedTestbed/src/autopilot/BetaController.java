@@ -35,20 +35,20 @@ public class BetaController extends AutoPilotController{
         float elapsedTime = this.getCurrentInputs().getElapsedTime();
 
         Vector center;
-        System.out.println("######################### NEW ITERATION ###########################");
+        //System.out.println("######################### NEW ITERATION ###########################");
         AutopilotInputs inputs = this.getCurrentInputs();
-        System.out.println("Elapsed Time: " + inputs.getElapsedTime());
-        System.out.println("Position: " + inputs.getX() + "; " + inputs.getY() + "; " + inputs.getZ());
-        System.out.println("Orientation: " + inputs.getHeading() + "; " + inputs.getPitch() + "; " + inputs.getRoll());
+//        System.out.println("Elapsed Time: " + inputs.getElapsedTime());
+//        System.out.println("Position: " + inputs.getX() + "; " + inputs.getY() + "; " + inputs.getZ());
+//        System.out.println("Orientation: " + inputs.getHeading() + "; " + inputs.getPitch() + "; " + inputs.getRoll());
         
         AutopilotInputs prevInput = this.getPreviousInputs();
-        System.out.println("Prev Elapsed: " + prevInput.getElapsedTime());
-        System.out.println("Prev Position: " + prevInput.getX() + "; " + prevInput.getY() + "; " + prevInput.getZ());
-        System.out.println("Prev Orientation: " + prevInput.getHeading() + "; " + prevInput.getPitch() + "; " + prevInput.getRoll());
-        
-        System.out.println("Time passed between current and previous: " + (inputs.getElapsedTime()-prevInput.getElapsedTime()));
-        
-        System.out.println("inputs objects current: " + this.getCurrentInputs() + "; previous: " + this.getPreviousInputs());
+//        System.out.println("Prev Elapsed: " + prevInput.getElapsedTime());
+//        System.out.println("Prev Position: " + prevInput.getX() + "; " + prevInput.getY() + "; " + prevInput.getZ());
+//        System.out.println("Prev Orientation: " + prevInput.getHeading() + "; " + prevInput.getPitch() + "; " + prevInput.getRoll());
+//        
+//        System.out.println("Time passed between current and previous: " + (inputs.getElapsedTime()-prevInput.getElapsedTime()));
+//        
+//        System.out.println("inputs objects current: " + this.getCurrentInputs() + "; previous: " + this.getPreviousInputs());
         
         try{
             center = APCamera.getCenterOfNCubes(1);
@@ -60,7 +60,7 @@ public class BetaController extends AutoPilotController{
         int nbColumns = APCamera.getNbColumns();
         int nbRows = APCamera.getNbRows();
         float cubeCoeff = (float) min(MAX_CUBE_COEFF, sqrt(nbRows*nbColumns)/center.getzValue());
-        System.out.println("PID positions x= " + xPosition + " ; y= " + yPosition);
+        //System.out.println("PID positions x= " + xPosition + " ; y= " + yPosition);
         //System.out.println("Cube coefficients: " + cubeCoeff);
         xControlActions(outputs, xPosition,cubeCoeff);
         yControlActions(outputs, yPosition, cubeCoeff, currentInputs.getPitch());
@@ -68,15 +68,15 @@ public class BetaController extends AutoPilotController{
 
         //System.out.println("Outputs Horizontal: " + outputs.getHorStabInclination()*RAD2DEGREE + "; Vertical: " + outputs.getVerStabInclination()*RAD2DEGREE );
         
-        System.out.println("Uncorrected outputs: " + outputs);
+        //System.out.println("Uncorrected outputs: " + outputs);
         
         rollControl(outputs);
         
-        System.out.println("Roll control outputs: " + outputs);
+        //System.out.println("Roll control outputs: " + outputs);
         
         angleOfAttackControl(outputs);
         
-        System.out.println("Corrected outputs: " + outputs);
+        //System.out.println("Corrected outputs: " + outputs);
         
         return outputs;
     }
@@ -173,7 +173,7 @@ public class BetaController extends AutoPilotController{
     private static final float MAX_VER_STAB_ANGLE = (float) (12.5*PI/180f);
     private static final float STANDARD_VER_STAB_INCL = (float) (5*PI/180f);
     private static final float TURNING_INCLINATION = (float) (10*PI/180);
-    private static final float ERROR_INCLINATION_MARGIN = (float) (3*PI/180);
+    private static final float ERROR_INCLINATION_MARGIN = (float) (5*PI/180);
     private static final int   BIAS = 0;
     private static final float THRESHOLD_DISTANCE = 1f;
     private static final float STANDARD_THRUST = 32.859283f*2;

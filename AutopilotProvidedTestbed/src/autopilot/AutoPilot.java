@@ -129,7 +129,7 @@ public class AutoPilot implements Autopilot {
 		//AutoPilotControllerNoAttack controller = this.attackController;
 		//attackController.setCurrentInputs(inputs);
     	AutopilotOutputs outputs =  controller.getControlActions();
-    	System.out.println("Actual outputs: " + outputs);
+    	//System.out.println("Actual outputs: " + outputs);
     	return outputs;
 	}
 
