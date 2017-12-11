@@ -56,7 +56,7 @@ public class BetaController extends AutoPilotController{
             center = new Vector(-10, 0, 4);
         }
         float xPosition = xPIDController.getPIDOutput(-center.getxValue(), elapsedTime);
-        float yPosition = yPIDController.getPIDOutput(center.getyValue(), elapsedTime);
+        float yPosition = yPIDController.getPIDOutput(-center.getyValue(), elapsedTime);
         int nbColumns = APCamera.getNbColumns();
         int nbRows = APCamera.getNbRows();
         float cubeCoeff = (float) min(MAX_CUBE_COEFF, sqrt(nbRows*nbColumns)/center.getzValue());
@@ -74,7 +74,7 @@ public class BetaController extends AutoPilotController{
         
         //System.out.println("Roll control outputs: " + outputs);
         
-        angleOfAttackControl(outputs);
+        //angleOfAttackControl(outputs);
         
         //System.out.println("Corrected outputs: " + outputs);
         
@@ -160,8 +160,8 @@ public class BetaController extends AutoPilotController{
         return yPID;
     }
 
-    private PIDController xPID = new PIDController(1.f, 0.15f, 0.3f);
-    private PIDController yPID = new PIDController(1.f, 0.1f, 0.3f);
+    private PIDController xPID = new PIDController(1.f, 0.0f, 0.0f);
+    private PIDController yPID = new PIDController(1.f, 0.0f, 0.0f);
     private PIDController rollPID = new PIDController(1f, 0.0f, 0.0f);
 
 
