@@ -7,7 +7,7 @@ import static java.lang.Math.*;
 
 /**
  * Created by Martijn on 30/10/2017.
- * Appended and edited by Anthony Rath� on 6/11/2017
+ * Appended and edited by Anthony Rathï¿½ on 6/11/2017
  * A class of Autopilot Controllers
  */
 public abstract class AutoPilotController {
@@ -238,9 +238,9 @@ public abstract class AutoPilotController {
      * Calculate an approximation of the velocity
      * @return the approximation of the velocity
      * elaboration: see textbook numerical math for derivative methods, the
-     * derivative of f(k+1) - f(k-1) / (2*timeStep) has O(h²) correctness
+     * derivative of f(k+1) - f(k-1) / (2*timeStep) has O(hÂ²) correctness
      */
-    private Vector getVelocityApprox(){
+    public Vector getVelocityApprox(){
         //get the inputs at moment k - 1 for the derivative
         AutopilotInputs prevInputs = this.getPreviousInputs();
         //get the inputs at moment k
@@ -724,7 +724,7 @@ public abstract class AutoPilotController {
     private class DeepCopyInputs implements AutopilotInputs{
     	
     	public DeepCopyInputs(AutopilotInputs input){
-    		this.orientation = new Vector(input.getHeading(), -input.getPitch(), input.getRoll());
+    		this.orientation = new Vector(input.getHeading() , input.getPitch(), input.getRoll());
     		this.position = new Vector(input.getX(), input.getY(), input.getZ());
     		this.elapsedTime = input.getElapsedTime();
     		this.image = input.getImage();
