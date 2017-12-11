@@ -77,7 +77,7 @@ public class BetaController extends AutoPilotController{
         angleOfAttackControl(outputs);
         
         //System.out.println("Corrected outputs: " + outputs);
-        System.out.println("approx velo: " + getVelocityApprox());
+        //System.out.println("approx velo: " + getVelocityApprox());
         return outputs;
     }
 
@@ -127,9 +127,9 @@ public class BetaController extends AutoPilotController{
         float thrust = (float) ((maxThrust/4) + THRUST_FACTOR*this.getTotalMass()*gravity*cubeCoeff);
         //System.out.println("thrust: " + thrust);
         outputs.setThrust(Math.max(Math.min(thrust, maxThrust), 0));
-//        if (getVelocityApprox().getzValue() > 17f){
-//        	outputs.setThrust(0f);
-//        }// toevoegen om snelheid drone te beperken
+        if (getVelocityApprox().getzValue() > 16.5f){
+        	outputs.setThrust(0f);
+        }
     }
 
     /*
@@ -174,14 +174,14 @@ public class BetaController extends AutoPilotController{
     public  static final float MAIN_MAX_INCLINATION = (float) (10*PI/180);
     private static final float MAX_HOR_STAB_INCLINATION = (float) (20*PI/180);
     private static final float STANDARD_HOR_STAB_INCLINATION = (float) (10*PI/180);
-    private static final float MAX_VER_STAB_ANGLE = (float) (12.5*PI/180f);
+    private static final float MAX_VER_STAB_ANGLE = (float) (11*PI/180f);
     private static final float STANDARD_VER_STAB_INCL = (float) (7*PI/180f);
     private static final float TURNING_INCLINATION = (float) (10*PI/180);
     private static final float ERROR_INCLINATION_MARGIN = (float) (2*PI/180);
     private static final int   BIAS = 0;
     private static final float THRESHOLD_DISTANCE = 1f;
     private static final float STANDARD_THRUST = 32.859283f*2;
-    private static final float THRUST_FACTOR = 1.5f;
+    private static final float THRUST_FACTOR = 1.75f;
     private static final float THRESHOLD_THRUST_ANGLE = (float)(PI/20);
     private static final float MAX_CUBE_COEFF = 3f;
     public  static final float STABILIZER_STABLE_INCLINATION = 0.0f;
